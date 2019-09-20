@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
+import lombok.Data;
+
+@Data
 @Entity
 public class Comanda extends BaseModel {
 	
@@ -18,23 +22,7 @@ public class Comanda extends BaseModel {
 	@Column(name = "id", unique = true, nullable = false)
 	private int id;
 	
-	List<Produto> produtos;
+	@ManyToMany
+	private List<Produto> produtos;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
-
-	
 }

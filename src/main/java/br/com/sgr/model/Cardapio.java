@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import lombok.Data;
+
+@Data
 @Entity
 public class Cardapio extends BaseModel {
 	
@@ -25,23 +28,5 @@ public class Cardapio extends BaseModel {
 	
 	@ManyToOne
 	private Estabelecimento estabelecimento;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
-	
-	
 
 }

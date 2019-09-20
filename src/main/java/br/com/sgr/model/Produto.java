@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import lombok.Data;
+
+@Data
 @Entity
 public class Produto extends BaseModel {
 	
@@ -28,53 +31,5 @@ public class Produto extends BaseModel {
 	
 	@ManyToOne
 	private Comanda comanda;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Double getValor() {
-		return valor;
-	}
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
-	public Cardapio getCardapio() {
-		return cardapio;
-	}
-
-	public void setCardapio(Cardapio cardapio) {
-		this.cardapio = cardapio;
-	}
-
-	public Comanda getComanda() {
-		return comanda;
-	}
-
-	public void setComanda(Comanda comanda) {
-		this.comanda = comanda;
-	}
 	
 }
