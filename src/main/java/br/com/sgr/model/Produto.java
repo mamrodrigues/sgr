@@ -1,10 +1,13 @@
 package br.com.sgr.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.Data;
@@ -24,12 +27,12 @@ public class Produto extends BaseModel {
 	
 	private String descricao;
 	
-	private Double valor;
+	private double valor;
 	
 	@ManyToOne
 	private Cardapio cardapio;
 	
-	@ManyToOne
-	private Comanda comanda;
+	@ManyToMany(mappedBy = "produtos")
+	private List<Comanda> comandas;
 	
 }

@@ -1,4 +1,6 @@
 spring:
+  db:
+     driver: org.postgresql.Driver
   datasource:
     url: jdbc:postgresql://localhost:5432/sgr
     username: postgres
@@ -8,8 +10,9 @@ spring:
     show-sql: true
     properties:
       hibernate:
+        packagesToScan: br.com.sgr
         default_schema: public
         show_sql: true
         ddl-auto: create-drop
         use_sql_comments: true
-        format_sql: true
+        format_sql: true     

@@ -1,4 +1,4 @@
-package br.com.sgr.service;
+package br.com.sgr.controller;
 
 import java.io.File;
 import java.io.IOException;
