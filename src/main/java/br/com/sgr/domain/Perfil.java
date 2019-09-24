@@ -1,4 +1,4 @@
-package br.com.sgr.model;
+package br.com.sgr.domain;
 
 public enum Perfil {
 	

@@ -1,32 +1,38 @@
-package br.com.sgr.model;
-
-import java.util.List;
+package br.com.sgr.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
 @Data
 @Entity
-public class Cardapio extends BaseModel {
+public class Endereco extends BaseModel {
 	
-	private static final long serialVersionUID = 1883804561271180115L;
+	private static final long serialVersionUID = -5332217832839212712L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private int id;
 	
-	@OneToMany(mappedBy = "cardapio")
-	private List<Produto> produtos;
+	private String endereco;
+
+	private String cep;
+
+	private String numero;
+
+	private String cidade;
+
+	private String estado;
 	
-	@ManyToOne
+	@OneToOne(mappedBy = "endereco")
+	@JoinColumn(unique = true)
 	private Estabelecimento estabelecimento;
 
 }

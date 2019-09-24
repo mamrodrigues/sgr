@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.sgr.dao.EstabelecimentoDAO;
-import br.com.sgr.model.Estabelecimento;
+import br.com.sgr.domain.Estabelecimento;
+import br.com.sgr.repository.EstabelecimentoRepository;
 
 //@CrossOrigin(origins = "https://sgr.herokuapp.com", maxAge = 3600)
 @RestController
@@ -18,26 +18,26 @@ import br.com.sgr.model.Estabelecimento;
 public class EstabelecimentoController {
 	
 	@Autowired
-	private EstabelecimentoDAO estabelecimentoDAO;
+	private EstabelecimentoRepository estabelecimentoRepository;
 
 	@RequestMapping(value = "/estabelecimentos", method = RequestMethod.POST)
 	public void salvar(@RequestBody Estabelecimento estabelecimento) {
-		estabelecimentoDAO.persist(estabelecimento);
+		estabelecimentoRepository.save(estabelecimento);
+	}
+	
+	@RequestMapping(value = "/estabelecimentos", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") Long id) {
+		estabelecimentoRepository.remove(id, Estabelecimento.class);
 	}
 
-//	@RequestMapping(value = "/estabelecimentos/{id}", method = RequestMethod.GET)
-//	public Estabelecimento recuperar(@PathVariable("id") int id) {
-//		return estabelecimentoDAO.(Estabelecimento.class, id);
-//	}
+	@RequestMapping(value = "/estabelecimentos/{id}", method = RequestMethod.GET)
+	public Estabelecimento recuperar(@PathVariable("id") Long id) {
+		return estabelecimentoRepository.get(id, Estabelecimento.class);
+	}
 
-//	@RequestMapping(value = "/estabelecimentos", params = { "nome" }, method = RequestMethod.GET)
-//	public List<Estabelecimento> recuperar(@RequestParam("nome") String nome) {
-//		return new EstabelecimentoDAO().findByName(nome);
-//	}
-
-//	@RequestMapping(value = "/estabelecimentos", method = RequestMethod.GET)
-//	public List<Estabelecimento> listar() {
-//		return estabelecimentoDAO.findAll(Estabelecimento.class);
-//	}
+	@RequestMapping(value = "/estabelecimentos", method = RequestMethod.GET)
+	public List<Estabelecimento> listar() {
+		return estabelecimentoRepository.list(Estabelecimento.class);
+	}
 
 }

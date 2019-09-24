@@ -8,11 +8,11 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import br.com.sgr.controller.EstabelecimentoController;
-import br.com.sgr.dao.EstabelecimentoDAO;
+import br.com.sgr.repository.EstabelecimentoRepository;
 
 @EnableWebMvc
 @ConfigurationProperties
-@ComponentScan(basePackageClasses = {EstabelecimentoDAO.class, EstabelecimentoController.class})
+@ComponentScan(basePackageClasses = {EstabelecimentoRepository.class, EstabelecimentoController.class})
 public class AppConfiguration {
 	
 	@Bean
