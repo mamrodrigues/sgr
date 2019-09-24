@@ -16,5 +16,5 @@ git clone https://github.com/mamrodrigues/sgr.git
 
 ## Autores
 
-* **Marcos Magalhães** - *Initial work* - [mamrodrigues](https://github.com/mamrodrigues)
-* **Diego Sousa** - *Initial work* - [diegodq](https://github.com/diegodq)
+* **Marcos Magalhães** - [mamrodrigues](https://github.com/mamrodrigues)
+* **Diego Sousa** - [diegodq](https://github.com/diegodq)
