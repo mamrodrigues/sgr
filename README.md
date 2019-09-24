@@ -10,8 +10,10 @@ git clone https://github.com/mamrodrigues/sgr.git
 
 ## Construído com
 
-* [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) - Framework
+* [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) - Framework que facilita subida e desenvolvimento de Aplicações Spring
 * [Maven](https://maven.apache.org/) - Gerenciamento de Dependências
+* [Lombok](https://projectlombok.org/) - Biblioteca Java para criação de GET e SET
+* [PostgreSQL](https://www.postgresql.org/docs/) - Banco de Dados
 * [Hibernate](https://hibernate.org/orm/documentation/5.4/) - ORM
 
 ## Autores
