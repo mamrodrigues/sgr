@@ -10,7 +10,8 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        packagesToScan: br.com.sgr
+        packagesToScan: br.com.sgr.domain
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         default_schema: public
         show_sql: true
         ddl-auto: create-drop
