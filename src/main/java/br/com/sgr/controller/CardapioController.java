@@ -18,15 +18,10 @@ public class CardapioController implements IController<Cardapio>{
 	
 	@Autowired
 	private CardapioRepository cardapioRepository;
-
-	@RequestMapping(value = "/cardapios", method = RequestMethod.POST)
-	public void salvar(@RequestBody Cardapio cardapio) {
-		cardapioRepository.save(cardapio);
-	}
 	
 	@Override
 	@RequestMapping(value = "/cardapios/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") Long id) {
+	public void delete(@PathVariable("id") int id) {
 		cardapioRepository.remove(id, Cardapio.class);
 	}
 	
@@ -44,7 +39,7 @@ public class CardapioController implements IController<Cardapio>{
 
 	@Override
 	@RequestMapping(value = "/cardapios/{id}", method = RequestMethod.GET)
-	public Cardapio get(@PathVariable("id") Long id) {
+	public Cardapio get(@PathVariable("id") int id) {
 		return cardapioRepository.get(id, Cardapio.class);
 	}
 	

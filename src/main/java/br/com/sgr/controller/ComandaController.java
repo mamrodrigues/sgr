@@ -20,8 +20,8 @@ public class ComandaController implements IController<Comanda>{
 	private ComandaRepository comandaRepository;
 	
 	@Override
-	@RequestMapping(value = "/comandas/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") Long id) {
+	@RequestMapping(name="teste", value = "/comandas/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") int id) {
 		comandaRepository.remove(id, Comanda.class);
 	}
 
@@ -39,7 +39,7 @@ public class ComandaController implements IController<Comanda>{
 
 	@Override
 	@RequestMapping(value = "/comandas/{id}", method = RequestMethod.GET)
-	public Comanda get(@PathVariable("id") Long id) {
+	public Comanda get(@PathVariable("id") int id) {
 		return comandaRepository.get(id, Comanda.class);
 	}
 	

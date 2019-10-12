@@ -24,12 +24,12 @@ public class BaseRepository<T> {
 		entityManager.persist(entity);
 	}
 
-	public void update(Long id, Class<T> persistedClass) {
+	public void update(int id, Class<T> persistedClass) {
 		T entity = entityManager.find(persistedClass, id);
 		entityManager.persist(entity);
 	}
 
-	public void remove(Long id, Class<T> persistedClass) {
+	public void remove(int id, Class<T> persistedClass) {
 		T entity = entityManager.find(persistedClass, id);
 		entityManager.remove(entity);
 	}
@@ -41,7 +41,7 @@ public class BaseRepository<T> {
 		return entityManager.createQuery(query).getResultList();
 	}
 
-	public T get(Long id, Class<T> persistedClass) {
+	public T get(int id, Class<T> persistedClass) {
 		return entityManager.find(persistedClass, id);
 	}
 

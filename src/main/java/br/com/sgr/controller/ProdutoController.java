@@ -19,7 +19,6 @@ public class ProdutoController implements IController<Produto>{
 	@Autowired
 	private ProdutoRepository produtoRepository;
 
-	@Override
 	@RequestMapping(value = "/produtos", method = RequestMethod.GET)
 	public List<Produto> list() {
 		return produtoRepository.list(Produto.class);
@@ -33,13 +32,13 @@ public class ProdutoController implements IController<Produto>{
 
 	@Override
 	@RequestMapping(value = "/produtos/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") Long id) {
+	public void delete(@PathVariable("id") int id) {
 		produtoRepository.remove(id, Produto.class);
 	}
 
 	@Override
 	@RequestMapping(value = "/produtos/{id}", method = RequestMethod.GET)
-	public Produto get(@PathVariable("id") Long id) {
+	public Produto get(@PathVariable("id") int id) {
 		return produtoRepository.get(id, Produto.class);
 	}
 

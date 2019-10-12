@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IController<T> {
 	
-	T get(Long id);
+	T get(int id);
 	
 	List<T> list();
 		
@@ -12,6 +12,6 @@ public interface IController<T> {
 	
 	void update(T t);
 	
-	void delete(Long id);
+	void delete(int id);
 
 }

@@ -27,7 +27,7 @@ public class EnderecoController implements IController<Endereco>{
 	
 	@Override
 	@RequestMapping(value = "/enderecos/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") Long id) {
+	public void delete(@PathVariable("id") int id) {
 		enderecoRepository.remove(id, Endereco.class);
 	}
 
@@ -39,7 +39,7 @@ public class EnderecoController implements IController<Endereco>{
 
 	@Override
 	@RequestMapping(value = "/enderecos/{id}", method = RequestMethod.GET)
-	public Endereco get(@PathVariable("id") Long id) {
+	public Endereco get(@PathVariable("id") int id) {
 		return enderecoRepository.get(id, Endereco.class);
 	}
 	

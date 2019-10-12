@@ -21,7 +21,7 @@ public class EstabelecimentoController implements IController<Estabelecimento>{
 
 	@Override
 	@RequestMapping(value = "/estabelecimentos/{id}", method = RequestMethod.GET)
-	public Estabelecimento get(@PathVariable("id") Long id) {
+	public Estabelecimento get(@PathVariable("id") int id) {
 		return estabelecimentoRepository.get(id, Estabelecimento.class);
 	}
 
@@ -39,7 +39,7 @@ public class EstabelecimentoController implements IController<Estabelecimento>{
 
 	@Override
 	@RequestMapping(value = "/estabelecimentos/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") Long id) {
+	public void delete(@PathVariable("id") int id) {
 		estabelecimentoRepository.remove(id, Estabelecimento.class);
 	}
 	

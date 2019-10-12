@@ -33,13 +33,13 @@ public class FuncionarioController implements IController<Funcionario>{
 
 	@Override
 	@RequestMapping(value = "/funcionarios/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") Long id) {
+	public void delete(@PathVariable("id") int id) {
 		funcionarioRepository.remove(id, Funcionario.class);
 	}
 
 	@Override
 	@RequestMapping(value = "/funcionarios/{id}", method = RequestMethod.GET)
-	public Funcionario get(@PathVariable("id") Long id) {
+	public Funcionario get(@PathVariable("id") int id) {
 		return funcionarioRepository.get(id, Funcionario.class);
 	}
 	

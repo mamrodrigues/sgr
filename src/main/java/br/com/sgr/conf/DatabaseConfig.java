@@ -12,8 +12,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
@@ -78,16 +81,16 @@ public class DatabaseConfig {
 		return hibernateProperties;
 	}
 
-//	@Bean
-//	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-//		LocalContainerEntityManagerFactoryBean managerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-//		managerFactoryBean.setDataSource(dataSource());
-//		managerFactoryBean.setPackagesToScan(new String[] { ENTITYMANAGER_PACKAGES_TO_SCAN });
-//		
-//		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-//		managerFactoryBean.setJpaVendorAdapter(vendorAdapter);
-//		return managerFactoryBean;
-//	}
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+		LocalContainerEntityManagerFactoryBean managerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+		managerFactoryBean.setDataSource(dataSource());
+		managerFactoryBean.setPackagesToScan(new String[] { ENTITYMANAGER_PACKAGES_TO_SCAN });
+		
+		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		managerFactoryBean.setJpaVendorAdapter(vendorAdapter);
+		return managerFactoryBean;
+	}
 
 	@Bean
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
