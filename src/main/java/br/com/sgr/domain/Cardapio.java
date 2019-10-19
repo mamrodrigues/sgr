@@ -23,6 +23,10 @@ public class Cardapio extends BaseModel {
 	@Column(name = "id", unique = true, nullable = false)
 	private int id;
 	
+	private String nome;
+	
+	private String descricao;
+	
 	@OneToMany(mappedBy = "cardapio")
 	private List<Produto> produtos;
 	

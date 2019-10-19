@@ -8,10 +8,10 @@ public interface IController<T> {
 	
 	List<T> list();
 		
-	void save(T t);
+	boolean save(T t);
 	
-	void update(T t);
+	boolean update(T t);
 	
-	void delete(int id);
+	boolean delete(int id);
 
 }

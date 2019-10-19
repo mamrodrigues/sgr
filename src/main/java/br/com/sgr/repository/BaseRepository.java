@@ -35,6 +35,8 @@ public class BaseRepository<T> {
 	}
 
 	public List<T> list(Class<T> persistedClass) {
+		//List<T> teste =  entityManager.createQuery("Select entity FROM "+persistedClass.getSimpleName() +" entity").getResultList();
+
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<T> query = builder.createQuery(persistedClass);
 		query.from(persistedClass);

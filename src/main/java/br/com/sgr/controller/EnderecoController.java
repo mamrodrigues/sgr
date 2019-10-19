@@ -3,6 +3,7 @@ package br.com.sgr.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import br.com.sgr.repository.EnderecoRepository;
 
 @RestController
 @RequestMapping("/sgr")
+@CrossOrigin(origins = "http://localhost:3000")
 public class EnderecoController implements IController<Endereco>{
 	
 	@Autowired
@@ -21,14 +23,16 @@ public class EnderecoController implements IController<Endereco>{
 
 	@Override
 	@RequestMapping(value = "/enderecos", method = RequestMethod.POST)
-	public void save(@RequestBody Endereco endereco) {
+	public boolean save(@RequestBody Endereco endereco) {
 		enderecoRepository.save(endereco);
+		return true;
 	}
 	
 	@Override
 	@RequestMapping(value = "/enderecos/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable("id") int id) {
+	public boolean delete(@PathVariable("id") int id) {
 		enderecoRepository.remove(id, Endereco.class);
+		return true;
 	}
 
 	@Override
@@ -44,8 +48,9 @@ public class EnderecoController implements IController<Endereco>{
 	}
 	
 	@Override
-	public void update(Endereco t) {
+	public boolean update(Endereco t) {
 		// TODO Auto-generated method stub
+		return true;
 	}
 
 }

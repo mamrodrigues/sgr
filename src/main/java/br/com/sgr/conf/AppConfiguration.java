@@ -5,7 +5,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import br.com.sgr.controller.EstabelecimentoController;
 import br.com.sgr.repository.EstabelecimentoRepository;
@@ -13,7 +15,7 @@ import br.com.sgr.repository.EstabelecimentoRepository;
 @EnableWebMvc
 @ConfigurationProperties
 @ComponentScan(basePackageClasses = {EstabelecimentoRepository.class, EstabelecimentoController.class})
-public class AppConfiguration {
+public class AppConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Bean
 	public MessageSource getMessageSource() {		
@@ -23,5 +25,15 @@ public class AppConfiguration {
 		messageSource.setCacheSeconds(1);
 		return messageSource;
 	}
+	
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**")
+						.allowedOrigins("*")
+						.allowedHeaders("*")
+						.allowedMethods("*")
+						.allowCredentials(true);
+	}
+
 
 }
