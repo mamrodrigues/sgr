@@ -2,11 +2,16 @@ package br.com.sgr.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -17,9 +22,10 @@ public class Endereco extends BaseModel {
 	private static final long serialVersionUID = -5332217832839212712L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
-	private int id;
+	@SequenceGenerator(name="endereco_seq", sequenceName="endereco_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_seq")
+	@Column(name = "endereco_id", unique = true, nullable = false)
+	private int enderecoId;
 	
 	private String endereco;
 
@@ -32,7 +38,6 @@ public class Endereco extends BaseModel {
 	private String estado;
 	
 	@OneToOne(mappedBy = "endereco")
-	@JoinColumn(unique = true)
+	@JsonManagedReference //@JsonBackReference
 	private Estabelecimento estabelecimento;
-
 }

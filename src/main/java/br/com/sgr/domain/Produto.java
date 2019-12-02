@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
@@ -19,9 +22,10 @@ public class Produto extends BaseModel {
 	private static final long serialVersionUID = -7252273539661743152L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
-	private int id;
+	@SequenceGenerator(name="produto_seq", sequenceName="produto_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produto_seq")
+	@Column(name = "produto_id", unique = true, nullable = false)
+	private int produtoId;
 	
 	private String nome;
 	
@@ -30,6 +34,7 @@ public class Produto extends BaseModel {
 	private double valor;
 	
 	@ManyToOne
+	@JsonBackReference
 	private Cardapio cardapio;
 	
 	@ManyToMany(mappedBy = "produtos")

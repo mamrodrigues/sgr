@@ -19,8 +19,10 @@ public class Comanda extends BaseModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
-	private int id;
+	@Column(name = "comanda_id", unique = true, nullable = false)
+	private int comandaId;
+	
+	private String nome;
 	
 	@ManyToMany
 	private List<Produto> produtos;

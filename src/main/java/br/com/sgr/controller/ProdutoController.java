@@ -26,6 +26,16 @@ public class ProdutoController  implements IController<Produto>{
 	public List<Produto> list() {
 		return produtoRepository.list(Produto.class);
 	}
+	
+	@RequestMapping(value = "/cardapios/{idCardapio}/produtos", method = RequestMethod.GET)
+	public List<Produto> listarProdutosPorCardapio(@PathVariable("idCardapio") int idCardapio) {
+		return produtoRepository.listaProdutosPorCardapio(idCardapio);
+	}
+	
+	@RequestMapping(value = "/comandas/{idComanda}/produtos", method = RequestMethod.GET)
+	public List<Produto> listarProdutosPorComanda(@PathVariable("idComanda") int idComanda) {
+		return produtoRepository.listaProdutosPorComanda(idComanda);
+	}
 
 	@Override
 	@RequestMapping(value = "/produtos", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

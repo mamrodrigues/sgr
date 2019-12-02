@@ -9,9 +9,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
@@ -22,8 +26,9 @@ public class Funcionario extends BaseModel {
 	private static final long serialVersionUID = -5007239783182270998L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
+	@SequenceGenerator(name="funcionario_seq", sequenceName="funcionario_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "funcionario_seq")
+	@Column(name = "funcionario_id", unique = true, nullable = false)
 	private int id;
 	
 	private String nome;
@@ -38,6 +43,8 @@ public class Funcionario extends BaseModel {
 	private Perfil perfil;
 	
 	@ManyToOne
+	@JoinColumn(name = "estabelecimento_id")
+	@JsonBackReference
 	private Estabelecimento estabelecimento;
 
 }

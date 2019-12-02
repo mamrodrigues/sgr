@@ -18,7 +18,7 @@ public class BaseRepository<T> {
 	}
 
 	@PersistenceContext
-	private EntityManager entityManager;
+	protected EntityManager entityManager;
 
 	public void save(T entity) {
 		entityManager.persist(entity);
