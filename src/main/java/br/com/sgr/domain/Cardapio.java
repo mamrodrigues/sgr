@@ -33,11 +33,11 @@ public class Cardapio extends BaseModel {
 	private String descricao;
 	
 	@OneToMany(mappedBy = "cardapio")
-	@JsonManagedReference
+	@JsonManagedReference(value="produto-cardapio")
 	private List<Produto> produtos;
 	
 	@ManyToOne
-	@JsonBackReference
+	@JsonBackReference(value="cardapio-estabelecimento")
 	private Estabelecimento estabelecimento;
 
 }

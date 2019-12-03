@@ -44,7 +44,7 @@ public class Funcionario extends BaseModel {
 	
 	@ManyToOne
 	@JoinColumn(name = "estabelecimento_id")
-	@JsonBackReference
+	@JsonBackReference(value="funcionario-estabelecimento")
 	private Estabelecimento estabelecimento;
 
 }

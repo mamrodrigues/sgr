@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -24,7 +27,8 @@ public class Comanda extends BaseModel {
 	
 	private String nome;
 	
-	@ManyToMany
-	private List<Produto> produtos;
+	@OneToMany(mappedBy = "comanda")
+	@JsonManagedReference(value = "comanda-pedido")
+	private List<Pedido> pedidos;
 
 }

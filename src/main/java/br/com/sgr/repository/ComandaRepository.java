@@ -6,5 +6,7 @@ import br.com.sgr.domain.Comanda;
 
 @Repository
 public class ComandaRepository extends BaseRepository<Comanda> {
+	
+	
 
 }

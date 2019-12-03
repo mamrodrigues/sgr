@@ -9,9 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -34,10 +36,11 @@ public class Produto extends BaseModel {
 	private double valor;
 	
 	@ManyToOne
-	@JsonBackReference
+	@JsonBackReference(value="produto-cardapio")
 	private Cardapio cardapio;
 	
-	@ManyToMany(mappedBy = "produtos")
-	private List<Comanda> comandas;
+	@OneToMany(mappedBy = "produto")
+	@JsonManagedReference(value = "produto-pedido")
+	private List<Pedido> pedidos;
 	
 }

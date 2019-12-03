@@ -39,15 +39,15 @@ public class Estabelecimento extends BaseModel {
 	
 	@OneToOne
 	@JoinColumn(name = "endereco_id")
-	@JsonBackReference //@JsonManagedReference
+	@JsonBackReference(value="endereco-estabelecimento") //@JsonManagedReference
 	private Endereco endereco;
 	
 	@OneToMany
-	@JsonManagedReference
+	@JsonManagedReference(value="funcionario-estabelecimento")
 	private List<Funcionario> funcionarios;
 	
 	@OneToMany
-	@JsonManagedReference
+	@JsonManagedReference(value="cardapio-estabelecimento")
 	private List<Cardapio> cardapio;
 	
 }

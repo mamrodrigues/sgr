@@ -38,6 +38,6 @@ public class Endereco extends BaseModel {
 	private String estado;
 	
 	@OneToOne(mappedBy = "endereco")
-	@JsonManagedReference //@JsonBackReference
+	@JsonManagedReference(value="endereco-estabelecimento") //@JsonBackReference
 	private Estabelecimento estabelecimento;
 }
