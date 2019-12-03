@@ -22,10 +22,15 @@ public class EnderecoController implements IController<Endereco>{
 	private EnderecoRepository enderecoRepository;
 
 	@Override
-	@RequestMapping(value = "/enderecos", method = RequestMethod.POST)
-	public boolean save(@RequestBody Endereco endereco) {
+	public boolean save(Endereco endereco) {
 		enderecoRepository.save(endereco);
 		return true;
+	}
+	
+	@RequestMapping(value = "/enderecos", method = RequestMethod.POST)
+	public Endereco saveAndGet(@RequestBody Endereco endereco) {
+		enderecoRepository.save(endereco);
+		return endereco;
 	}
 	
 	@Override

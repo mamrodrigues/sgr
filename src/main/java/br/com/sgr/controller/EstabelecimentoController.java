@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sgr.domain.Endereco;
 import br.com.sgr.domain.Estabelecimento;
 import br.com.sgr.repository.EstabelecimentoRepository;
 
@@ -34,10 +35,28 @@ public class EstabelecimentoController implements IController<Estabelecimento>{
 	}
 
 	@Override
-	@RequestMapping(value = "/estabelecimentos", method = RequestMethod.POST)
-	public boolean save(@RequestBody Estabelecimento t) {
+	public boolean save(Estabelecimento t) {
 		estabelecimentoRepository.save(t);
 		return true;
+	}
+	
+	@RequestMapping(value = "/estabelecimentos", method = RequestMethod.POST)
+	public Estabelecimento saveAndGet(@RequestBody Estabelecimento estabelecimento) {
+		if(estabelecimento.getEstabelecimentoId() == 0) {
+			estabelecimentoRepository.save(estabelecimento);
+			return estabelecimento;
+		} else {
+			Estabelecimento e = estabelecimentoRepository.get(estabelecimento.getEstabelecimentoId(), Estabelecimento.class);
+			e.setEndereco(estabelecimento.getEndereco());
+			e.setCep(estabelecimento.getCep());
+			e.setNumero(estabelecimento.getNumero());
+			e.setEstado(estabelecimento.getEstado());
+			e.setCidade(estabelecimento.getCidade());
+			e.setNome(estabelecimento.getNome());
+			e.setCnpj(estabelecimento.getCnpj());
+			estabelecimentoRepository.save(e);
+			return e;
+		}
 	}
 
 	@Override

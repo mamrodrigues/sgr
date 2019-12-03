@@ -34,13 +34,23 @@ public class Estabelecimento extends BaseModel {
 	
 	private String nome;
 	
+	private String endereco;
+
+	private String cep;
+
+	private String numero;
+
+	private String cidade;
+
+	private String estado;
+	
 	@Column(unique = true)
 	private String cnpj;
 	
-	@OneToOne
-	@JoinColumn(name = "endereco_id")
-	@JsonBackReference(value="endereco-estabelecimento") //@JsonManagedReference
-	private Endereco endereco;
+//	@OneToOne
+//	@JoinColumn(name = "endereco_id")
+//	@JsonBackReference(value="endereco-estabelecimento") //@JsonManagedReference
+//	private Endereco endereco;
 	
 	@OneToMany
 	@JsonManagedReference(value="funcionario-estabelecimento")

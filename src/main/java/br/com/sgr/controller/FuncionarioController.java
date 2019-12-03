@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sgr.domain.Estabelecimento;
 import br.com.sgr.domain.Funcionario;
 import br.com.sgr.repository.FuncionarioRepository;
 
@@ -29,10 +30,24 @@ public class FuncionarioController implements IController<Funcionario>{
 	}
 
 	@Override
-	@RequestMapping(value = "/funcionarios", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean save(@RequestBody Funcionario t) {
 		funcionarioRepository.save(t);
 		return true;
+	}
+	
+	@RequestMapping(value = "/funcionarios", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Funcionario saveAndGet(@RequestBody Funcionario funcionario) {
+		if(funcionario.getId() == 0) {
+			funcionarioRepository.save(funcionario);
+			return funcionario;
+		} else {
+			Funcionario f = funcionarioRepository.get(funcionario.getId(), Funcionario.class);
+			f.setNome(funcionario.getNome());
+			f.setCpf(funcionario.getCpf());
+			f.setDataNascimento(funcionario.getDataNascimento());
+			funcionarioRepository.save(f);
+			return f;
+		}
 	}
 
 	@Override

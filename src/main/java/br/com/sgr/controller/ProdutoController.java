@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sgr.domain.Cardapio;
 import br.com.sgr.domain.Produto;
 import br.com.sgr.repository.ProdutoRepository;
 
@@ -38,10 +39,25 @@ public class ProdutoController  implements IController<Produto>{
 	}
 
 	@Override
-	@RequestMapping(value = "/produtos", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	//@RequestMapping(value = "/produtos", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean save(@RequestBody Produto t) {
 		produtoRepository.save(t);
 		return true;
+	}
+	
+	@RequestMapping(value = "/produtos", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Produto saveAndGet(@RequestBody Produto produto) {
+		if(produto.getProdutoId() == 0) {
+			produtoRepository.save(produto);
+			return produto;
+		} else {
+			Produto p = produtoRepository.get(produto.getProdutoId(), Produto.class);
+			p.setNome(produto.getNome());
+			p.setDescricao(produto.getDescricao());
+			p.setValor(produto.getValor());
+			produtoRepository.save(p);
+			return p;
+		}
 	}
 
 	@Override

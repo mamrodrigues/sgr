@@ -21,7 +21,7 @@ public class EnderecoDeserealizer extends JsonDeserializer<Endereco> {
 		int id =  node.get("endereco").get("enderecoId").asInt();
 		
 		Endereco endereco = new Endereco();
-		endereco.setEnderecoId(id);
+//		endereco.setEnderecoId(id);
 				
 		return endereco;
 	}

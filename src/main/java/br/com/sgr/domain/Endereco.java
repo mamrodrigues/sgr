@@ -15,29 +15,29 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
-@Data
-@Entity
+//@Data
+//@Entity
 public class Endereco extends BaseModel {
 	
-	private static final long serialVersionUID = -5332217832839212712L;
-
-	@Id
-	@SequenceGenerator(name="endereco_seq", sequenceName="endereco_seq")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_seq")
-	@Column(name = "endereco_id", unique = true, nullable = false)
-	private int enderecoId;
-	
-	private String endereco;
-
-	private String cep;
-
-	private String numero;
-
-	private String cidade;
-
-	private String estado;
-	
-	@OneToOne(mappedBy = "endereco")
-	@JsonManagedReference(value="endereco-estabelecimento") //@JsonBackReference
-	private Estabelecimento estabelecimento;
+//	private static final long serialVersionUID = -5332217832839212712L;
+//
+//	@Id
+//	@SequenceGenerator(name="endereco_seq", sequenceName="endereco_seq")
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_seq")
+//	@Column(name = "endereco_id", unique = true, nullable = false)
+//	private int enderecoId;
+//	
+//	private String endereco;
+//
+//	private String cep;
+//
+//	private String numero;
+//
+//	private String cidade;
+//
+//	private String estado;
+//	
+//	@OneToOne(mappedBy = "endereco")
+//	@JsonManagedReference(value="endereco-estabelecimento") //@JsonBackReference
+//	private Estabelecimento estabelecimento;
 }
