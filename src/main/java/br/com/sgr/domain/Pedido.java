@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -28,7 +27,6 @@ public class Pedido extends BaseModel {
 
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "produto_id")
-	@JsonBackReference(value = "produto-pedido")
 	private Produto produto;
  
 	@ManyToOne(fetch = FetchType.EAGER)

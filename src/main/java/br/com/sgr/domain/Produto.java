@@ -40,7 +40,7 @@ public class Produto extends BaseModel {
 	private Cardapio cardapio;
 	
 	@OneToMany(mappedBy = "produto")
-	@JsonManagedReference(value = "produto-pedido")
+	@JsonBackReference(value = "produto-pedido")
 	private List<Pedido> pedidos;
 	
 }

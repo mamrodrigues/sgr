@@ -3,7 +3,6 @@ package br.com.sgr.repository;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
 
 import org.springframework.stereotype.Repository;
 
@@ -21,8 +20,12 @@ public class ProdutoRepository extends BaseRepository<Produto> {
 	}
 	
 	public List<Produto> listaProdutosPorComanda(int idComanda) {
+		String queryString = "select pr from Produto pr " + 
+				"join pr.pedidos pe " +
+				"where pe.comanda.comandaId = :pIdComanda";
+		
 		TypedQuery<Produto> query =
-				entityManager.createQuery("select p from Produto p join p.comandas c where c.id = :pIdComanda", Produto.class);
+				entityManager.createQuery(queryString, Produto.class);
 		query.setParameter("pIdComanda", idComanda);
 		return query.getResultList();
 	}
