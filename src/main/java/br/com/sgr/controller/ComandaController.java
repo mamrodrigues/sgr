@@ -50,6 +50,7 @@ public class ComandaController implements IController<Comanda>{
 		} else {
 			Comanda c = comandaRepository.get(comanda.getComandaId(), Comanda.class);
 			c.setNome(comanda.getNome());
+			c.setFechada(comanda.isFechada());
 			comandaRepository.save(c);
 			return c;
 		}

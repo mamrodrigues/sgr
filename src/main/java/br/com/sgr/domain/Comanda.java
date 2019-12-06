@@ -30,5 +30,7 @@ public class Comanda extends BaseModel {
 	@OneToMany(mappedBy = "comanda")
 	@JsonManagedReference(value = "comanda-pedido")
 	private List<Pedido> pedidos;
+	
+	private boolean isFechada;
 
 }

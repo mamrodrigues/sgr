@@ -34,4 +34,6 @@ public class Pedido extends BaseModel {
 	@JsonBackReference(value = "comanda-pedido")
 	private Comanda comanda;
 	
+	private String observacao;
+	
 }
